@@ -1,0 +1,75 @@
+<template name="userProfileTemplate">
+	<div class="container">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="col-md-4">	
+				{{#each userDetails}}
+					<p style="margin:0px auto; text-align:center; font-size:1.5em; font-style:bold">{{username}}</p>
+					<img src="../images/burger.png" alt="">
+					
+					<table>
+						<tbody>
+							<tr style="border-bottom:0.5px solid black">
+								<td style="width:100px">Username</td>
+								<td>{{username}}</td>
+							</tr>
+							<tr style="border-bottom:0.5px solid black">
+								<td>Email</td>
+								<td>{{email}}</td>
+							</tr>
+							<tr style="border-bottom:0.5px solid black">
+								<td>Join date</td>
+								<td>{{registeredAt}}</td>
+							</tr>
+							<tr style="border-bottom:0.5px solid black">
+								<td>Phone</td>
+								<td>{{phoneNumber}}</td>
+							</tr>
+							<tr style="border-bottom:0.5px solid black">
+								<td>Address</td>
+								<td>{{address}}</td>
+							</tr>
+						</tbody>
+					</table>
+				{{/each}}
+
+			</div>
+			<div class="col-md-2">
+				
+			</div>
+			<div class="col-md-6">
+				<h3>Update Profile</h3>
+				<br>
+
+				<form class="updateForm">
+					<p>Phone number</p>
+					<input type="text" name="uPhone" id="uPhone" class="form-control">
+					<br>
+					<p>Address</p>
+					<input type="text" name="uAddress" id="uAddress" class="form-control">
+					<br>
+					<button type="submit" class="btn btn-primary">Update profile</button>
+				</form>
+
+				<hr>
+				<h3>Change password</h3>
+				<br>
+
+				<form class="changePasswordForm">
+					<p>Old password</p>
+					<input type="password" name="oldPass" id="input" class="form-control">
+					<br>
+					<p>New password</p>
+					<input type="password" name="newPass" id="input" class="form-control">
+					<br>
+					<p>Confirm password</p>
+					<input type="password" name="confirmPass" id="input" class="form-control">
+					<br>
+					<button type="submit" class="btn btn-primary">Change password</button>
+				</form>
+				<br>
+				<br>
+			</div>
+			
+		</div>
+	</div>
+</template>

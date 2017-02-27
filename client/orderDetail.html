@@ -1,0 +1,111 @@
+<template name="orderDetailTemplate">
+	<div class="container">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+			<!-- Breadcrumbs -->
+			<h3>Order Detail</h3>
+			<br>
+			<ol class="breadcrumb">
+				<li>
+					<a href="/checkout" title="" >
+						Checkout
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" title="" class="active">
+						Order Detail
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" title="">
+						Finish
+					</a>
+				</li>
+			</ol>
+			<!-- breadcrumbs -->
+
+			<div class="col-md-5">
+				{{#each deliveryInfo}}
+
+					<p>Order number: <span style="background:yellow;" id="orderNumber">{{orNo}}</span></p>
+					<p>Customer name: {{userName}}</p>
+					<p>Customer phone: {{uPhone}}</p>
+					<p>Customer email: {{userEmail}}</p>
+					<p>Customer choose: <b>{{dType}}</b></p>
+					<hr>
+					<p>
+						Delivery Address: <b>{{dAddress}}</b>
+					</p>
+					<p style="color:red">Delivery extra fee: $<b id="orFee">{{dFee}}</b></p>
+					<br>
+					<hr>
+
+				{{/each}}
+			</div>
+			<div class="col-md-7">
+
+				<table class="table" style="width:100%">
+			    <thead>
+			      <tr>
+			        <th>Food name</th>
+			        <th></th>
+			        <th style="width:10%"></th>
+			        <th style="width:10%"></th>
+			        <th style="width:3%">Quantity</th>
+			        <th style="width:25%">Price</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			    	<!-- this line for product -->
+		    		{{#each orderList}}
+				      <tr>
+				        <td colspan="4">
+				        	<b>{{orProductName}}
+				        	</b>
+				        	
+				        </td>
+				        <td align="center">{{orQuantity}}</td>
+				        <td>
+				        	<span style="color:red">
+				        		${{orTotal}}
+				        	</span>
+				        	
+				        </td>
+				      </tr>
+		      		{{/each}}
+			      <!-- this line for total price -->
+			      <tr>
+			      	<td></td>
+			        <td></td>
+			        <td></td>
+			        <td></td>
+			        <td>Total</td>
+			        <td>
+			        	<b style="color:red; font-size:1.2em">
+			        		$<span id="orderTotal2">{{sumOrder}}
+				        	</span>
+			        	</b>
+			        	<p>(This total is not included delivery extra fee)</p>
+			        </td>
+			      </tr>
+			      <!-- this line for back button and choosing delivery type -->
+			      
+
+			    </tbody>
+			  </table>
+			  <i>- Please capture this order detail and specially is Order Number. Thank you !</i>
+			  <br>
+			  <i>- Please call <b style="color:red">1969 6969</b> to cancel your order and not over 15 minutes after ordering.</i>
+			  <br>
+			  <br>
+			  <button type="button" class="btn btn-success btn-lg" style="float:right" id="btnConfirm">
+			  	<span class="glyphicon glyphicon-ok"></span>
+			  	&nbsp;Confirm & place order</button>
+			  	<br>
+			  	<br>
+			</div>
+			
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+</template>

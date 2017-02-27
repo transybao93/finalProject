@@ -1,0 +1,141 @@
+<template name="mainAdminTemplate">
+  
+  <div class="container">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="col-md-4">
+        {{> typeList}}
+        {{> addType}}
+      </div>
+      <div class="col-md-4">
+        {{> foodManagement}}
+        {{> addFood}}
+      </div>
+      <div class="col-md-4">
+        {{> productList}}
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<template name="addType">
+  <br>
+  <hr>
+  <p>Add new type</p>
+  <form class="addTypeForm">
+    <input type="text" name="tName" placeholder="type name">
+    <br>
+    <br>
+    <input type="text" name="tDescription" placeholder="description">
+    <br>
+    <br>
+    <input type="submit" value="add new type">
+  </form>
+</template>
+
+<template name="addFood">
+  <br>
+  <hr>
+  <p>Add new food</p>
+  <form class="addFoodForm">
+    <p>Type: </p>
+    <select name="lType">
+      {{#each listType}}
+      <option value="{{_id}}">
+        {{tName}}
+      </option>
+      {{/each}}
+    </select>
+    <br>
+    <br>
+    <p>Unit: </p>
+    <select name="lUnit">
+      <option value="miếng">
+        miếng
+      </option>
+      <option value="thố">
+        thố
+      </option>
+      <option value="dĩa">
+        dĩa
+      </option>
+      <option value="ly">
+        ly
+      </option>
+      <option value="túi">
+        túi
+      </option>
+    </select>
+    <br>
+    <br>
+    <input type="text" name="pName" placeholder="product name">
+    <br>
+    <br>
+    <input type="text" name="pPricepU" placeholder="product price/unit">
+    <br>
+    <br>
+    <input type="text" name="pDescription" placeholder="product description">
+    <br>
+    <br>
+    <input type="text" name="pDiscount" placeholder="product discount">
+    <br>
+    <br>
+    <input type="submit" value="Add new food">
+
+  </form>
+</template>
+
+<template name="typeList">
+  <ul>
+    {{#each listType}}
+    <li>
+      <span id="tName">{{tName}}</span>
+              
+      [ <a href="javascript:void(0)" style="cursor:pointer" id="btnView">View</a>
+      -           
+      <a href="javascript:void(0)" id="btnDelete" style="cursor:pointer">Delete</a> ]
+    </li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name="foodManagement">
+  <ul>
+    {{#each products}}
+    <li>
+      {{pName}} 
+      [ <a href="javascript:void(0)" id="btnEdit" style="cursor:pointer">Edit</a> ]
+      [ <a href="javascript:void(0)" id="btnDelete" style="cursor:pointer">Delete</a> ]
+    </li>
+    {{/each}}
+  </ul>
+
+</template>
+
+<template name="productList">
+  <form class="updateProductForm">
+    Product id <br> 
+    <input name="pID" id="pID" disabled="disabled">
+    <br>
+    Product type <br> 
+    
+    <select name="lType">
+      {{#each listType}}
+      <option value="{{_id}}">
+        {{tName}}
+      </option>
+      {{/each}}
+    </select>
+
+    <br>
+    Product name <br> 
+    <input name="pName" id="pName">
+    <br>
+    Price <br> 
+    <input name="pPrice" id="pPrice">
+    <br>
+    Image path:<br>
+    <input name="pImagePath" id="pImagePath">
+    <button type="submit">Update product</button>
+  </form>
+</template>

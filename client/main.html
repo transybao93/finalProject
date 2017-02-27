@@ -1,0 +1,362 @@
+<head>
+  <title>Ordering Online System</title>
+</head>
+<body>
+  <h1 style="text-align:center">Online Ordering System</h1>
+  <br>  
+  <div class="col-md-10 col-md-offset-1">
+    {{>topmenu}}
+  </div>
+</body>
+<template name="mainTemplate">
+  <!-- <div class="col-lg-1">
+    left
+  </div> -->
+    
+    <div class="col-md-10 col-md-offset-1">
+      
+      <div class="col-md-9">
+          {{> foodList}}
+      </div>
+      <div class="col-md-3">
+        {{> search}}
+        <br>
+        <p>Your order</p>
+        {{> checkOutTemplate}}
+        {{> checkout2}}
+      </div>
+    </div>
+
+  <!-- <div class="col-lg-1">
+    right
+  </div> -->
+</template>
+<template name="hello">
+  <button>Click Me</button>
+  <p>You've pressed the button {{counter}} times.</p>
+</template>
+<template name="info">
+  <h2>Learn Meteor!</h2>
+  <ul>
+    <li><a href="https://www.meteor.com/try">Do the Tutorial</a></li>
+    <li><a href="http://guide.meteor.com">Follow the Guide</a></li>
+    <li><a href="https://docs.meteor.com">Read the Docs</a></li>
+    <li><a href="https://forums.meteor.com">Discussions</a></li>
+  </ul>
+</template>
+<template name="foodList">
+  
+{{#each products}}
+  <div class="col-md-4 col-lg-6">
+    <div class="thumbnail">
+      <img src="{{pImagePath}}" alt="..." style="width:200px; height:210px; max-width:200px; max-height:200px">
+      <div class="caption">
+        <h3>{{pName}}</h3>
+        <p style="color:red; font-weight:bold" id="currency">
+          ${{pPricePerUnit}}
+        </p>
+        
+        <!-- <p>
+          Type ID: {{pTypeID}}
+        </p>
+        <p>
+          Unit: {{pUnit}}
+        </p>
+        <p>
+          Description: {{pDescription}}
+        </p>
+        <p>
+          Discount: {{pDiscount}} %
+        </p>
+        <p>
+          Created at: 
+          {{pCreatedAt}}
+        </p> -->
+
+         <a href="javascript:void(0)" class="btn btn-primary" role="button" id="btnOrder">Order now</a> 
+
+         <a href="javascript:void(0)" class="btn btn-default" role="button" id="btnViewMore" data-toggle="modal" data-target="#foodDetail">more details...</a>
+        <!-- <p>
+          <a href="javascript:void(0)" class="btn btn-primary" role="button" id="btnOrder">Order now</a> 
+
+          
+
+          <a href="javascript:void(0)" class="btn btn-default" role="button" id="btnViewMore" data-toggle="modal" data-target="#foodDetail">more details...</a>
+        </p> -->
+
+        <!-- <div class="viewBlock">
+          <p style="float:left">
+            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+            {{pCustomerViews}} view(s)
+            
+          </p>
+        </div> -->
+
+
+      </div>
+    </div>
+  </div>
+  {{/each}}
+
+  {{> modal}}
+</template>
+<template name="topmenu">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- header -->
+      <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Brand</a>
+            </div>
+      <!-- right nav bar -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li> -->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            {{#each types}}
+            <li>
+              <a href="javascript:void(0)" id="typeName" style="cursor:pointer">{{tName}}</a>
+            </li>
+            {{/each}}
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="#">Order 
+            <span style="color:red">
+              [{{countOrder}}]
+            </span>
+          </a>
+        </li>
+        <!-- <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li> -->
+        {{> login}}
+      </ul>
+    </div><!-- /.navbar-collapse -->
+    <!-- right nav bar -->
+    </div>
+  </nav>
+</template>
+<template name="search">
+
+  <form class="searchForm">
+
+    <div class="input-group stylish-input-group">
+
+      <input type="text" class="form-control" name="searchValue" id="searchText" placeholder="search food name..." style="z-index:0">
+      <span class="input-group-addon">
+          <button type="submit">
+              <span class="glyphicon glyphicon-search"></span>
+          </button>  
+      </span>
+
+    </div>
+
+  </form>
+
+</template>
+<template name="checkout2">
+</template>
+<template name="checkOutTemplate">
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th style="width:10px"></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each orderList}}
+      <tr>
+        <td style="text-align:center; width:10%">
+          <button type="button" class="btn btn-danger" id="btnRemoveOrder">
+            <span class="glyphicon glyphicon-remove"></span>
+          </button>
+          
+        </td>
+
+        <td style="width:50%">
+          {{orProductName}}
+          <br>
+          x   {{orQuantity}}
+        </td>
+        <td style="width:40%">
+          
+          
+          <p>
+          <!--minus 1 to quantity-->
+            <span class="glyphicon glyphicon-minus" aria-hidden="true" style="float:right; cursor:pointer" id="mQ">
+            </span>
+          <!--plus 1 to quantity-->
+            <span class="glyphicon glyphicon-plus" aria-hidden="true" style="float:right; cursor:pointer; margin-right:10px" id="pQ">
+            </span>
+          </p>   
+
+          <p style="float:right; color:red; font-size:1.2em; margin-top:5px" id="txtTotal">${{orTotal}}</p>
+        </td>
+        
+      </tr>
+      {{/each}}
+      <tr>
+        <td style="width:10%">Total</td>
+        <td style="width:50%"></td>
+        <td style="width:40%">
+          <span style="float:right; font-size:1.3em; color:red" id="orderTotal">
+            $<span id="orderTotal2">{{sumOrder}}</span>
+           </span>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3" rowspan="3">
+          <button type="button" class="btn btn-primary" id="btnCheckOut">Checkout</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</template>
+
+<template name="modal">
+
+  <!-- Modal -->
+  <div class="modal fade" id="foodDetail" tabindex="-1" role="dialog" aria-labelledby="foodDetailLabel" style="height:auto">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="fName"></h4> (<span id="fID"></span>)
+        </div>
+        <div class="modal-body" style="min-height:380px">
+
+          <img style="float:left; width:320px;height:300px" id="fImage"/>
+          <div class="modalContent">
+            <!-- Product content -->
+            
+              <p>
+                Unit: 
+                <span id="fUnit"></span>
+              </p>
+              <p>
+                Price per unit: 
+                <span id="fPpu"></span>
+              </p>
+              
+
+              
+            
+            <!-- Comment from registered customer -->            
+              
+              {{> commentTemplate}}
+              
+            
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="leftbtn">
+            <!-- view button -->
+            
+            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+            &nbsp;
+            <span id="fCustomerView"></span> view(s)  
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <!-- like button -->
+            
+            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+            &nbsp;
+            <span id="fCustomerView"></span>
+          </div>
+          
+
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+</template>
+
+<template name="commentTemplate">
+  <div class="panel with-nav-tabs panel-default" style="width:100%">
+    <div class="panel-heading">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                  <a href="#tab1default" data-toggle="tab">Reviews
+                  </a>
+                </li>
+                <li>
+                  <a href="#tab2default" data-toggle="tab" id="showComment">Comments (<span id="commentCount"></span>)
+                  </a>
+                </li>
+                <li>
+                  <a href="#tableaveComment" data-toggle="tab">Leave a comment
+                  </a>
+                </li>
+            </ul>
+    </div>
+    <div class="panel-body" style="width:400px">
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="tab1default">
+              <p>
+                Status: 
+                <span id="fStatus"></span>
+              </p>
+              <p>
+                Description:  
+                <span id="fDescription"></span>
+              </p>
+            </div>
+            <div class="tab-pane fade" id="tab2default" style="height:180px; overflow:auto;">
+              
+              <div class="singleComment">
+                <p id="commentEmail">
+                </p>
+                
+              </div>
+
+
+              
+            </div>
+
+            <div class="tab-pane fade" id="tableaveComment" style="height:150px; overflow:auto;">
+              
+
+              <form class="commentForm">
+                
+                <span>Your name</span>
+                <br>
+                <input id="cName" style="margin-bottom: 10px;height:35px; font-size:1.2em; text-indent:10px; width:90%" type="text" name="cName" />
+                <!-- <input id="cName"> -->
+                <br>
+                <span>Comment</span>
+                <textarea name="cComment" style="margin-bottom: 10px; height:100px; font-size:1.2em; width:90%; outline:none; border-radius:0; resize:none" id="cComment" class="form-control"></textarea>
+                <!-- <input id="cComment"> -->
+
+
+                <input class="btn btn-info" style="clear: left; width: 90%; height: 36px; font-size:1.2em; margin-bottom:15px" type="submit" value="Post" />  
+              </form>  
+            </div>
+        </div>
+    </div>
+</div>
+</template>

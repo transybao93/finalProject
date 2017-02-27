@@ -1,0 +1,152 @@
+<template name="login">
+  <li class="dropdown">
+    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+      <span id="userLink">Login </span>
+      <strong class="caret"></strong>
+    </a>
+    <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+      <!--login form here -->
+      {{> loginTemplate}}
+      <!--register form-->
+      {{> registerT}}
+      <!--End register form--> 
+
+      <!--forgot password form -->
+      {{> forgotPass}}
+      <!--End forgot password form-->
+      {{> success}}
+      {{> userList}}
+    </div>
+
+
+  </li>
+</template>
+
+<template name="loginTemplate">
+	<div class="login1">
+        <form class="loginForm">
+          <div class="alert alert-success" role="alert" id="loginAlert">
+              You can purchase product without login! But our shop has many attractive promotions for registered customer!
+          <br>
+            <a href="javascript:void(0)" onclick="document.getElementById('loginAlert').style.display='none'">Got it!</a>
+          </div>
+          <p>Email</p>
+          <input id="loginEmail" style="margin-bottom: 10px;height:35px; font-size:1.2em; text-indent:10px" type="email" name="uEmail" size="30" />
+
+          <p>Password</p>
+          <input id="loginPass" style="margin-bottom: 10px;height:35px; font-size:1.2em; text-indent:10px" type="password" name="uPass" size="30" />
+          <p>
+            <input id="user_remember_me" style="float: left; margin-right: 10px; margin-bottom:15px" type="checkbox" name="user[remember_me]" value="1" />
+            <label class="string optional" for="user_remember_me" stle="margin-bottom:10px"> Remember me</label>
+          </p>
+          
+
+          <input class="btn btn-primary" style="clear: left; width: 100%; height: 36px; font-size:1.2em; margin-bottom:15px" type="submit" value="Login" />
+          <p><a href="javascript:void(0)" class="fp">Forgot password?</a></p>
+          <p>Not registered? <a href="javascript:void(0)" class="na">Create an account</a></p>
+        </form>
+        
+      </div> 
+</template>
+
+<template name="registerT">
+  <div class="register">
+        <form class="registerForm">
+          <button type="button" class="btn btn-default" aria-label="Left Align" id="btnBack" style="margin-bottom:10px">
+            <span class="glyphicon glyphicon-arrow-left">
+            </span>
+            <br>
+            Back
+          </button>
+          <br>
+          <div class="alert alert-success" role="alert" id="registerAlert">
+              Good customer! Do you know about our cumulative points system for customer?
+            <br>
+            <a href="javascript:void(0)" onclick="document.getElementById('registerAlert').style.display='none'">Got it!</a>
+          </div>
+          <p>Username</p>
+          <input id="user_username" style="margin-bottom: 10px;height:35px; font-size:1.2em; text-indent:10px" type="text" name="uName" size="30" onfocus="this.style.outline='0'" maxlength="50"/>
+          <br>
+          <em style="color:gray; font-weight:italic">*Your username's characters will between the range from 1 to 50 characters*</em>
+          <p id="user_username_2"></p>
+
+          <p>Email</p>
+          <input id="user_email" style="margin-bottom: 10px;height:35px; font-size:1.2em; text-indent:10px" type="email" name="uEmail" size="30" onfocus="this.style.outline='0'" />
+
+          <p>Password</p>
+          <input id="user_password" style="margin-bottom: 10px;height:35px; font-size:1.2em; text-indent:10px" type="password" name="uPass" size="30" onfocus="this.style.outline='0'"/>
+
+          <p>Confirm password</p>
+          <input id="user_rpassword" style="margin-bottom: 10px;height:35px; font-size:1.2em; text-indent:10px" type="password" size="30" name="rpass" onfocus="this.style.outline='0'"/>
+          
+          <p>
+            <input id="user_agree_term" style="float: left; margin-right: 10px; margin-bottom:15px" type="checkbox" name="agree" value="1" onfocus="this.style.outline='0'"/>
+            <label class="string optional" for="user_agree_term" stle="margin-bottom:10px"> Terms of use</label>
+          </p>
+          <p>
+            <input id="user_receive_email" style="float: left; margin-right: 10px; margin-bottom:15px" type="checkbox" name="receiveEmail" value="1" onfocus="this.style.outline='0'"/>
+            <label class="string optional" for="user_receive_email" stle="margin-bottom:10px"> Receive news and special offers</label>
+          </p>
+
+          <input class="btn btn-primary" style="clear: left; width: 100%; height: 36px; font-size:1.2em; margin-bottom:15px" type="submit" value="Register" id="btnRegister"/>
+        </form>
+        
+      </div>  
+</template>
+
+<!--forgot password-->
+<template name="forgotPass">
+      <!--forgot password form -->
+
+      <div class="forgotP">
+        <form class="fPForm">
+          <button type="button" class="btn btn-default" aria-label="Left Align" id="btnBack2" style="margin-bottom:10px">
+            <span class="glyphicon glyphicon-arrow-left">
+            </span>
+            <br>
+            Back
+          </button>
+          <br>
+          <div class="alert alert-info" role="alert">
+              Enter your email address, we will send you a password reset email !
+          </div>
+          <input id="user_username" style="margin-bottom: 10px;height:35px; font-size:1.2em; text-indent:10px" type="email" name="uName" size="30" />
+          
+
+          <input class="btn btn-primary" style="clear: left; width: 100%; height: 36px; font-size:1.2em; margin-bottom:15px" type="submit" value="Reset password" />
+        </form>
+        
+      </div> 
+</template>
+
+<template name="success">
+  <div class="successTemplate" style="width:250px">
+  	<img src="../images/ok.png" alt="" width="40px" height="43px" style="float:left; margin:0px auto; margin-right:10px; margin-bottom:10px">
+  	<p>Login successfully!</p>
+    <p>Welcome to our website!</p>
+  </div>
+</template>
+
+<template name="userList">
+	<div class="userPanel">
+		<ul>
+			<li>
+        <img src="../images/setting.png" style="float:left">
+				<a href="#" title="">Setting</a>
+			</li>
+			<li id="btnProfile">
+        <img src="../images/user.png" style="float:left">
+				<a href="#" id="btnProfile" title="">Profile</a>
+			</li>
+			<li id="btnOrders">
+        <img src="../images/viewCart.png" style="float:left">
+				<a href="#" title="" id="btnOrders">Orders</a>
+			</li>
+			<li id="btnLogout">
+        <img src="../images/logout.png" style="float:left">
+				<a href="javascript:void(0)" >Logout</a>
+			</li>
+		</ul>
+	</div>
+	<br>
+</template>

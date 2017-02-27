@@ -1,0 +1,10 @@
+iron:router
+jquery
+twbs:bootstrap
+flawless:meteor-toastr
+dburles:google-maps
+aldeed:collection2
+ecmascript
+es5-shim
+jparker:crypto-md5
+session

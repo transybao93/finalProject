@@ -1,0 +1,123 @@
+/* CSS declarations go here */
+
+.stylish-input-group .input-group-addon{
+    background: white !important; 
+}
+.stylish-input-group .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+
+.modalContent
+{
+	float:left;
+	margin-left:10px;
+	margin-top:10px;
+}
+
+.leftbtn
+{
+	float:left;
+	margin-top:7px;
+}
+
+.affix 
+{
+      top: 0;
+      width:100%;
+}
+
+.affix + .container-fluid 
+{
+  padding-top: 70px;
+}
+
+.userPanel > ul > li 
+{
+	padding:10px;
+	list-style: none;
+	margin-left:-45px;
+
+}
+
+.userPanel ul li a
+{
+	text-decoration: none;
+	color:black;
+	margin-left:15px;
+}
+
+.userPanel > ul > li:hover
+{
+	cursor: pointer;
+	background:#f9f9f9;
+}
+
+#loginEmail
+{
+	outline:0px;
+}
+
+#loginPass
+{
+	outline:0px;
+}
+
+#suggetDiv
+{
+	width:100%;
+	clear:both;
+	overflow-x:auto;
+	height:300px;
+	float:left;
+}
+
+.currentProccess
+{
+	font-weight: bold;
+}
+
+.map-container {
+  width: 800px;
+  max-width: 100%;
+  height: 500px;
+}
+
+.singleComment{
+	width:100%;
+	padding:5px;
+}
+
+.cmImage{
+
+}
+
+#cComment:focus{
+	overflow:hidden;
+	outline:none !important;
+	box-shadow: none;
+}
+
+.viewBlock
+{
+	width:100%;
+	background:transparent;
+	height:25px;
+	bottom:0px;
+}
+
+.active
+{
+	color:gray;
+}
+
+.active:hover
+{
+	text-decoration: none;
+	color:gray;
+}

@@ -1,0 +1,76 @@
+<template name="searchTemplate">
+	<!-- <div class="col-lg-1">
+    left
+  </div> -->
+  <div class="col-lg-10 col-lg-offset-1">
+    <div class="col-lg-9">
+      {{> lFood2}}
+    </div>
+    <div class="col-lg-3 hidden-sm">
+		  {{>search}}
+      <br>
+      <p>Your order</p>
+      {{> checkOutTemplate}}
+    </div>
+  </div>
+  <!-- <div class="col-lg-1">
+    right
+  </div> -->
+	
+</template>
+
+<template name="lFood2">
+	{{#each products}}
+  <div class="col-md-4 col-lg-6">
+    <div class="thumbnail">
+      <img src="{{pImagePath}}" style="width:200px; height:210px; max-width:200px; max-height:200px">
+      <div class="caption">
+        <h3>{{pName}}</h3>
+        <p style="color:red; font-weight:bold" id="currency">
+          ${{pPricePerUnit}}
+        </p>
+        
+        <!-- <p>
+          Type ID: {{pTypeID}}
+        </p>
+        <p>
+          Unit: {{pUnit}}
+        </p>
+        <p>
+          Description: {{pDescription}}
+        </p>
+        <p>
+          Discount: {{pDiscount}} %
+        </p>
+        <p>
+          Created at: 
+          {{pCreatedAt}}
+        </p> -->
+
+         <a href="javascript:void(0)" class="btn btn-primary" role="button" id="btnOrder">Order now</a> 
+
+         <a href="javascript:void(0)" class="btn btn-default" role="button" id="btnViewMore" data-toggle="modal" data-target="#foodDetail">more details...</a>
+        <!-- <p>
+          <a href="javascript:void(0)" class="btn btn-primary" role="button" id="btnOrder">Order now</a> 
+
+          
+
+          <a href="javascript:void(0)" class="btn btn-default" role="button" id="btnViewMore" data-toggle="modal" data-target="#foodDetail">more details...</a>
+        </p> -->
+
+        <!-- <div class="viewBlock">
+          <p style="float:left">
+            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+            {{pCustomerViews}} view(s)
+            
+          </p>
+        </div> -->
+
+
+      </div>
+    </div>
+  </div>
+  {{/each}}
+
+  {{> modal}}
+</template>

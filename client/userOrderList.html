@@ -1,0 +1,43 @@
+<template name="userOrderList">
+	<div class="container">
+		<div class="col-md-10 col-md-offset-1">
+
+			<div class="col-md-6">
+				<h3>User order history</h3>
+				<p>Total  
+					<b style="color:brown; font-size:1.3em">{{orderCount}}
+					</b> order(s) has been placed by this account
+				</p>
+				<hr>
+				{{#each orderList}}
+					<p>
+						Order Number: {{orNo}}
+						<br>
+						Total price: <b>${{orTotal}}</b>
+						<br>
+						<i>
+							{{orDate}}
+						</i>
+						<br>
+						[ <a href="javascript:void(0)" title="" style="cursor:pointer" id="viewMore">Details</a> ]
+						&nbsp;
+						[ <a href="javascript:void(0)" title="" style="cursor:pointer" id="btnDeleteOrder">Delete this order</a> ]
+					</p>
+
+				{{/each}}
+				<hr>
+			</div>
+			<div class="col-md-6">
+				<div class="OrderDetails">
+					<p>Order number: <b id="orNo"></b></p>
+					<p>Total price (included delivery fee): $<b id="total"></b>
+					</p>
+					<p>Food list: </p>
+					<span id="singleFood"></span>
+				</div>
+
+			</div>
+			
+		</div>
+	</div>
+</template>
